@@ -1,0 +1,28 @@
+{% extends 'projapp/base.htm' %}
+{% load static %}
+{% block title %}
+    Register
+{% endblock title %}
+
+{% block body_block %}
+    <style>
+        form{
+            text-align: center;
+            margin: 10%;
+        }
+    </style>
+    <div class="jumbotron">
+        
+        <form method="POST">
+            {% if registered %}
+                <h1>Thanks for Registering!</h1>
+            {% else %}
+                <h1>Registration</h1>
+                {{register.as_p}}
+                {% csrf_token %}
+                <input type="submit" name='Register'>
+            {% endif %}
+        </form>
+        {{form.errors}}
+    </div>
+ {% endblock body_block %}

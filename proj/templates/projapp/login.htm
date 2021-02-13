@@ -1,0 +1,26 @@
+{% extends 'projapp/base.htm' %}
+{% load static %}
+{% block title %}
+Login
+{% endblock title %}
+{% block body_block %}
+<div class="jumbotron">
+    <h1> Please Login</h1>
+    <form action="{% url 'projapp:login' %}" method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="Enter Username">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" >
+
+        <input type="submit" value="Login">
+
+    </form>
+    <div>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body_block %}
